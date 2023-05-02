@@ -1,16 +1,10 @@
-# Fetching the latest node image on alpine linux
-FROM node:alpine
-
-COPY . /react-app
-# Setting up the work directory
-WORKDIR /react-app
-
-# Installing dependencies
-# COPY ./package.json /react-app
-RUN npm install
-
-# Copying all the files in our project
-# COPY . .
-
-# Starting our application
-CMD npm start
+FROM node:lts-alpine
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
+COPY . .
+EXPOSE 3000
+RUN chown -R node /usr/src/app
+USER node
+CMD ["npm", "start"]
