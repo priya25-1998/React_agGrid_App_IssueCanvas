@@ -36,14 +36,12 @@ function App() {
     {
       field: "ControlID",
       chartDataType: "category",
-      editable: true,
       filter: true,
       tooltipField: "ControlID",
       enableRowGroup: true,
     },
     {
       field: "ControlName",
-      editable: true,
       tooltipField: "ControlName",
       chartDataType: "category",
       filter: true,
@@ -51,14 +49,12 @@ function App() {
     },
     {
       field: "CurrentTestFrequency",
-      editable: true,
       chartDataType: "category",
       enableRowGroup: true,
     },
     {
       field: "RecommendationAction",
       chartDataType: "category",
-      editable: true,
       filter: true,
       tooltipField: "RecommendationAction",
       enableRowGroup: true,
@@ -66,7 +62,6 @@ function App() {
     {
       field: "Recommendation",
       chartDataType: "category",
-      editable: true,
       filter: true,
       tooltipField: "Recommendation",
       enableRowGroup: true,
@@ -75,21 +70,22 @@ function App() {
           return {
             backgroundColor: "LightCoral",
             fontWeight: "bold",
-            borderRadius: "15px",
+            borderRadius: "2px",
             textAlign: "center",
-            border: "chocolate",
+            border: "crimson Solid",
             color: "white",
             width: "160px",
             height: "35px",
+            
           };
         }
         if (params.value === "Optimize") {
           return {
             backgroundColor: "MediumAquamarine",
             fontWeight: "bold",
-            borderRadius: "15px",
+            borderRadius: "2px",
             textAlign: "center",
-            border: "chocolate",
+            border: "LightSeaGreen Solid",
             color: "white",
             width: "160px",
             height: "35px",
@@ -100,7 +96,6 @@ function App() {
     {
       field: "Action",
       chartDataType: "series",
-      editable: true,
       enableRowGroup: true,
       cellRenderer: function (params) {
         if (params.value === "Take Action") {
@@ -125,13 +120,11 @@ function App() {
     {
       field: "Mode",
       chartDataType: "category",
-      editable: true,
       filter: true,
       enableRowGroup: true,
     },
     {
       field: "Rationale",
-      editable: true,
       tooltipField: "Rationale",
       chartDataType: "category",
       enableRowGroup: true,
@@ -140,7 +133,6 @@ function App() {
       field: "Rationale Filter",
       chartDataType: "category",
       tooltipField: "Rationale Filter",
-      editable: true,
       enableRowGroup: true,
       filter: true,
       /*cellStyle: (params) => {
@@ -156,15 +148,14 @@ function App() {
       field: "ControlTestCount",
       chartDataType: "series",
       tooltipField: "ControlTestCount",
-      editable: true,
       enableRowGroup: true,
     },
   ]);
 
   useEffect(() => {
-    const URL =
-      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/Test_Plan+Recommendations.csv";
-    fetch(URL)
+    const object_URL =
+      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/test_plan_recommendations.csv";
+    fetch(object_URL)
       .then((response) => response.text())
       .then((csvData) => {
         const rows = csvData.split("\n");
@@ -194,7 +185,6 @@ function App() {
   const defaultColDef = useMemo(() => {
     return {
       sortable: true,
-      editable: true,
       flex: 1,
       minWidth: 220,
       resizable: true,
