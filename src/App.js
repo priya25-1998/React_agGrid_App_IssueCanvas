@@ -154,7 +154,7 @@ function App() {
 
   useEffect(() => {
     const object_URL =
-      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/test_plan_recommendations.csv";
+      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/optimization_test_plan.csv";
     fetch(object_URL)
       .then((response) => response.text())
       .then((csvData) => {
