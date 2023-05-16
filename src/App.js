@@ -32,7 +32,8 @@ function App() {
       tooltipField: "LoB",
       rowDrag: true,
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "ControlID",
@@ -40,7 +41,8 @@ function App() {
       filter: true,
       tooltipField: "ControlID",
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "ControlName",
@@ -48,13 +50,15 @@ function App() {
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "CurrentTestFrequency",
       chartDataType: "category",
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "RecommendationAction",
@@ -62,7 +66,8 @@ function App() {
       filter: true,
       tooltipField: "RecommendationAction",
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "Recommendation",
@@ -71,6 +76,7 @@ function App() {
       tooltipField: "Recommendation",
       enableRowGroup: true,
       enablePivot:true,
+      aggFunc: 'count',
       cellStyle: (params) => {
         if (params.value === "Re-test") {
           return {
@@ -104,6 +110,7 @@ function App() {
       chartDataType: "series",
       enableRowGroup: true,
       enablePivot:true,
+      aggFunc: 'count',
       cellRenderer: function (params) {
         if (params.value === "Take Action") {
           return (
@@ -129,14 +136,16 @@ function App() {
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "Rationale",
       tooltipField: "Rationale",
       chartDataType: "category",
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
     {
       field: "Rationale Filter",
@@ -145,6 +154,7 @@ function App() {
       enableRowGroup: true,
       enablePivot:true,
       filter: true,
+      aggFunc: 'count',
       /*cellStyle: (params) => {
         if (params.value === "Issue Detected") {
           return { fontWeight: "bold", borderRadius:'15px', textAlign:'center'};
@@ -159,7 +169,8 @@ function App() {
       chartDataType: "series",
       tooltipField: "ControlTestCount",
       enableRowGroup: true,
-      enablePivot:true
+      enablePivot:true,
+      aggFunc: 'count'
     },
   ]);
 
