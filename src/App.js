@@ -33,7 +33,7 @@ function App() {
       rowDrag: true,
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "ControlID",
@@ -42,7 +42,7 @@ function App() {
       tooltipField: "ControlID",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "ControlName",
@@ -51,14 +51,14 @@ function App() {
       filter: true,
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "CurrentTestFrequency",
       chartDataType: "category",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "RecommendationAction",
@@ -67,7 +67,7 @@ function App() {
       tooltipField: "RecommendationAction",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "Recommendation",
@@ -76,7 +76,7 @@ function App() {
       tooltipField: "Recommendation",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count',
+      aggFunc: 'sum',
       cellStyle: (params) => {
         if (params.value === "Re-test") {
           return {
@@ -110,7 +110,7 @@ function App() {
       chartDataType: "series",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count',
+      aggFunc: 'sum',
       cellRenderer: function (params) {
         if (params.value === "Take Action") {
           return (
@@ -137,7 +137,7 @@ function App() {
       filter: true,
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "Rationale",
@@ -145,7 +145,7 @@ function App() {
       chartDataType: "category",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
     {
       field: "Rationale Filter",
@@ -154,7 +154,7 @@ function App() {
       enableRowGroup: true,
       enablePivot:true,
       filter: true,
-      aggFunc: 'count',
+      aggFunc: 'sum',
       /*cellStyle: (params) => {
         if (params.value === "Issue Detected") {
           return { fontWeight: "bold", borderRadius:'15px', textAlign:'center'};
@@ -170,7 +170,7 @@ function App() {
       tooltipField: "ControlTestCount",
       enableRowGroup: true,
       enablePivot:true,
-      aggFunc: 'count'
+      aggFunc: 'sum'
     },
   ]);
 
