@@ -32,6 +32,7 @@ function App() {
       tooltipField: "LoB",
       rowDrag: true,
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "ControlID",
@@ -39,6 +40,7 @@ function App() {
       filter: true,
       tooltipField: "ControlID",
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "ControlName",
@@ -46,11 +48,13 @@ function App() {
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "CurrentTestFrequency",
       chartDataType: "category",
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "RecommendationAction",
@@ -58,6 +62,7 @@ function App() {
       filter: true,
       tooltipField: "RecommendationAction",
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "Recommendation",
@@ -65,6 +70,7 @@ function App() {
       filter: true,
       tooltipField: "Recommendation",
       enableRowGroup: true,
+      enablePivot:true,
       cellStyle: (params) => {
         if (params.value === "Re-test") {
           return {
@@ -97,6 +103,7 @@ function App() {
       field: "Action",
       chartDataType: "series",
       enableRowGroup: true,
+      enablePivot:true,
       cellRenderer: function (params) {
         if (params.value === "Take Action") {
           return (
@@ -122,18 +129,21 @@ function App() {
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "Rationale",
       tooltipField: "Rationale",
       chartDataType: "category",
       enableRowGroup: true,
+      enablePivot:true
     },
     {
       field: "Rationale Filter",
       chartDataType: "category",
       tooltipField: "Rationale Filter",
       enableRowGroup: true,
+      enablePivot:true,
       filter: true,
       /*cellStyle: (params) => {
         if (params.value === "Issue Detected") {
@@ -149,6 +159,7 @@ function App() {
       chartDataType: "series",
       tooltipField: "ControlTestCount",
       enableRowGroup: true,
+      enablePivot:true
     },
   ]);
 
@@ -266,6 +277,8 @@ function App() {
         rowDragManaged={true}
         suppressMoveWhenRowDragging={true}
         statusBar={statusBar}
+        suppressBrowserResizeObserver={true}
+        pivotMode={true}
       />
     </div>
   );
