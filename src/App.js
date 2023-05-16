@@ -278,7 +278,7 @@ function App() {
         suppressMoveWhenRowDragging={true}
         statusBar={statusBar}
         suppressBrowserResizeObserver={true}
-        pivotMode={true}
+        pivotMode={false}
       />
     </div>
   );
