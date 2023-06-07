@@ -10,6 +10,8 @@ LicenseManager.setLicenseKey(
   "MTY4ODA3OTYwMDAwMA==5266e2b19455d0b5c7c8c52bf6367755"
 );
 
+
+
 function App() {
   // Define all the static variables
 
@@ -23,163 +25,81 @@ function App() {
 
   const [columnDefs] = useState([
     {
-      field: "LoB",
-      headerName: "LOB",
+      field: "Control ID",
+      headerName: "Control ID",
       chartDataType: "category",
-      checkboxSelection: true,
+      filter: true,
+      tooltipField: "Control ID",
       headerCheckboxSelection: true,
-      filter: "agSetColumnFilter",
-      tooltipField: "LoB",
+      enableRowGroup: true,
+      checkboxSelection: true,
       rowDrag: true,
-      enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
       enableValue: true,
       //aggFunc: 'count'
     },
     {
-      field: "ControlID",
-      chartDataType: "category",
-      filter: true,
-      tooltipField: "ControlID",
-      enableRowGroup: true,
-      enablePivot:true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "ControlName",
-      tooltipField: "ControlName",
+      field: "Control Name",
+      headerName: "Control Name",
+      tooltipField: "Control Name",
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
       enableValue: true,
       //aggFunc: 'count'
     },
     {
-      field: "CurrentTestFrequency",
-      chartDataType: "category",
-      enableRowGroup: true,
-      enablePivot:true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "RecommendationAction",
+      field: "Control Description",
+      headerName: "Control Description",
+      tooltipField: "Control Description",
       chartDataType: "category",
       filter: true,
-      tooltipField: "RecommendationAction",
       enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
+      enableValue: true,
+      //aggFunc: 'count'
+    },
+
+    {
+      field: "Insight",
+      headerName: "Insight",
+      chartDataType: "category",
+      filter: true,
+      tooltipField: "Insight",
+      enableRowGroup: true,
+      enablePivot: true,
       enableValue: true,
       //aggFunc: 'count'
     },
     {
-      field: "Recommendation",
+      field: "Tested LoB",
+      headerName: "Tested LoB",
       chartDataType: "category",
-      filter: true,
-      tooltipField: "Recommendation",
+      filter: "agSetColumnFilter",
+      tooltipField: "Tested LoB",
       enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
       enableValue: true,
-      //aggFunc: 'count',
-      cellStyle: (params) => {
-        if (params.value === "Re-test") {
-          return {
-            backgroundColor: "LightCoral",
-            fontWeight: "bold",
-            borderRadius: "2px",
-            textAlign: "center",
-            border: "crimson Solid",
-            color: "white",
-            width: "160px",
-            height: "35px",
-            
-          };
-        }
-        if (params.value === "Optimize") {
-          return {
-            backgroundColor: "MediumAquamarine",
-            fontWeight: "bold",
-            borderRadius: "2px",
-            textAlign: "center",
-            border: "LightSeaGreen Solid",
-            color: "white",
-            width: "160px",
-            height: "35px",
-          };
-        }
-      },
+      //aggFunc: 'count'
     },
     {
-      field: "Action",
+      field: "Total Test Count",
+      headerName: "Total Test Count",
       chartDataType: "series",
+      tooltipField: "Total Test Count",
       enableRowGroup: true,
-      enablePivot:true,
-      enableValue: true,
-      //aggFunc: 'count',
-      cellRenderer: function (params) {
-        if (params.value === "Take Action") {
-          return (
-            <button
-              onClick={() =>
-                navigateToDetails(
-                  params.data.id,
-                  "https://mdosri.rnd.metricstream.com/ui/report/101077/report5568"
-                )
-              }
-              className="btn"
-            >
-              Take Action
-            </button>
-          );
-        } else {
-          return params.value;
-        }
-      },
-    },
-    {
-      field: "Mode",
-      chartDataType: "category",
-      filter: true,
-      enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
       enableValue: true,
       //aggFunc: 'count'
     },
     {
-      field: "Rationale",
-      tooltipField: "Rationale",
-      chartDataType: "category",
-      enableRowGroup: true,
-      enablePivot:true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Rationale Filter",
-      chartDataType: "category",
-      tooltipField: "Rationale Filter",
-      enableRowGroup: true,
-      enablePivot:true,
-      filter: true,
-      enableValue: true,
-      //aggFunc: 'count',
-      /*cellStyle: (params) => {
-        if (params.value === "Issue Detected") {
-          return { fontWeight: "bold", borderRadius:'15px', textAlign:'center'};
-        }
-        if (params.value === "Control Consistently Passed") {
-          return {fontWeight: "bold",borderRadius:'15px', textAlign:'center'};
-        }
-      },*/
-    },
-    {
-      field: "ControlTestCount",
+      field: "Duplicate/Similar Count",
+      headerName: "Duplicate/Similar Count",
       chartDataType: "series",
-      tooltipField: "ControlTestCount",
+      tooltipField: "Duplicate/Similar Count",
       enableRowGroup: true,
-      enablePivot:true,
+      enablePivot: true,
       enableValue: true,
       //aggFunc: 'count'
     },
@@ -187,7 +107,7 @@ function App() {
 
   useEffect(() => {
     const object_URL =
-      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/test_plan_recommendations.csv";
+      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/Duplicate_controls_within_same_Lob.csv";
     fetch(object_URL)
       .then((response) => response.text())
       .then((csvData) => {
@@ -219,7 +139,7 @@ function App() {
     return {
       sortable: true,
       flex: 1,
-      minWidth: 220,
+      minWidth: 270,
       resizable: true,
       floatingFilter: true,
       enablePivot: true,
@@ -267,12 +187,6 @@ function App() {
     };
   }, []);
 
-  // navigateToDetails Function
-  function navigateToDetails(id, url) {
-    console.log("Navigating to details for each row using a URL");
-    window.location.href = url;
-  }
-
   const popupParent = useMemo(() => {
     return document.body;
   }, []);
@@ -283,7 +197,7 @@ function App() {
       className="ag-theme-alpine"
       style={{ height: 500, width: 1350 }}
     >
-      <h2>Test Plan Recommendations</h2>
+      <h2>Duplicate Controls within Same LOB</h2>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
