@@ -24,8 +24,8 @@ services:
     depends_on:
       - aggrid
     ports:
-      - "80:80"
-      - "443:443"  
+      - "9000:80"
+      - "4430:443"  
     networks:
       - aggrid-network
 
