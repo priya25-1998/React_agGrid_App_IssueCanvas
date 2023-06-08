@@ -1,19 +1,19 @@
 version: '3.4'
 
 services:
-  aggrid:
-    image: aggrid
+  aggrid2:
+    image: aggrid2
     build:
       context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
-      - "3001"
+      - "3000"
     networks:
-      - aggrid-network
+      - aggrid-network2
 
-  aggrid-nginx:
+  aggrid-nginx2:
     image: nginx:latest
     restart: unless-stopped
     volumes:
@@ -22,12 +22,12 @@ services:
       - ./ssl/nginx-selfsigned.crt:/etc/nginx/nginx-selfsigned.crt:ro
       - ./ssl/dhparam.pem:/etc/nginx/dhparam.pem:ro
     depends_on:
-      - aggrid
+      - aggrid2
     ports:
       - "9000:80"
       - "4430:443"  
     networks:
-      - aggrid-network
+      - aggrid-network2
 
 networks:
-  aggrid-network:
+  aggrid-network2:
