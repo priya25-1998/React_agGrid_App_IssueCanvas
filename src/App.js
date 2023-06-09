@@ -189,7 +189,7 @@ function App() {
       className="ag-theme-alpine"
       style={{ height: 500, width: 1350 }}
     >
-      <h2>Duplicate Controls within Same LOB</h2>
+      <h2>Issues Issues Associated With Theme</h2>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
