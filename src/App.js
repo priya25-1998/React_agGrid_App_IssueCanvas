@@ -25,11 +25,11 @@ function App() {
 
   const [columnDefs] = useState([
     {
-      field: "Control ID",
-      headerName: "Control ID",
+      field: "Issue ID",
+      headerName: "Issue ID",
       chartDataType: "category",
       filter: true,
-      tooltipField: "Control ID",
+      tooltipField: "Issue ID",
       headerCheckboxSelection: true,
       enableRowGroup: true,
       checkboxSelection: true,
@@ -39,9 +39,9 @@ function App() {
       //aggFunc: 'count'
     },
     {
-      field: "Control Name",
-      headerName: "Control Name",
-      tooltipField: "Control Name",
+      field: "Issue Title",
+      headerName: "Issue Title",
+      tooltipField: "Issue Title",
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
@@ -50,9 +50,43 @@ function App() {
       //aggFunc: 'count'
     },
     {
-      field: "Control Description",
+      field: "Issue Description",
+      headerName: "Issue Description",
+      tooltipField: "Issue Description",
+      chartDataType: "category",
+      filter: true,
+      enableRowGroup: true,
+      enablePivot: true,
+      enableValue: true,
+      //aggFunc: 'count'
+    },
+    {
+      field: "ctrl_id",
+      headerName: "Control ID",
+      chartDataType: "category",
+      filter: true,
+      tooltipField: "ctrl_id",
+      enableRowGroup: true,
+      rowDrag: true,
+      enablePivot: true,
+      enableValue: true,
+      //aggFunc: 'count'
+    },
+    {
+      field: "ctrl_name",
+      headerName: "Control Name",
+      tooltipField: "ctrl_name",
+      chartDataType: "category",
+      filter: true,
+      enableRowGroup: true,
+      enablePivot: true,
+      enableValue: true,
+      //aggFunc: 'count'
+    },
+    {
+      field: "ctrl_desc",
       headerName: "Control Description",
-      tooltipField: "Control Description",
+      tooltipField: "ctrl_desc",
       chartDataType: "category",
       filter: true,
       enableRowGroup: true,
@@ -61,53 +95,11 @@ function App() {
       //aggFunc: 'count'
     },
 
-    {
-      field: "Insight",
-      headerName: "Insight",
-      chartDataType: "category",
-      filter: true,
-      tooltipField: "Insight",
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Tested LoB",
-      headerName: "Tested LoB",
-      chartDataType: "category",
-      filter: "agSetColumnFilter",
-      tooltipField: "Tested LoB",
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Total Test Count",
-      headerName: "Total Test Count",
-      chartDataType: "series",
-      tooltipField: "Total Test Count",
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Duplicate/Similar Count",
-      headerName: "Duplicate/Similar Count",
-      chartDataType: "series",
-      tooltipField: "Duplicate/Similar Count",
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
   ]);
 
   useEffect(() => {
     const object_URL =
-      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/Duplicate_controls_within_same_Lob.csv";
+      "https://ms-optimizer.s3.us-east-2.amazonaws.com/Sample/issues_associated_with_theme.csv";
     fetch(object_URL)
       .then((response) => response.text())
       .then((csvData) => {
