@@ -20,81 +20,104 @@ function App() {
   const enableCharts = true;
   const enableRangeSelection = true;
   const enableRangeHandle = true;
+  const rowHeight = 100;
 
   // Define the columns and Rows
 
   const [columnDefs] = useState([
     {
-      field: "Issue ID",
-      headerName: "Issue ID",
-      chartDataType: "category",
-      filter: true,
-      tooltipField: "Issue ID",
-      headerCheckboxSelection: true,
-      enableRowGroup: true,
-      checkboxSelection: true,
-      rowDrag: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Issue Title",
-      headerName: "Issue Title",
-      tooltipField: "Issue Title",
-      chartDataType: "category",
-      filter: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "Issue Description",
-      headerName: "Issue Description",
-      tooltipField: "Issue Description",
-      chartDataType: "category",
-      filter: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "ctrl_id",
-      headerName: "Control ID",
-      chartDataType: "category",
-      filter: true,
-      tooltipField: "ctrl_id",
-      enableRowGroup: true,
-      rowDrag: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "ctrl_name",
-      headerName: "Control Name",
-      tooltipField: "ctrl_name",
-      chartDataType: "category",
-      filter: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-    {
-      field: "ctrl_desc",
-      headerName: "Control Description",
-      tooltipField: "ctrl_desc",
-      chartDataType: "category",
-      filter: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
-      //aggFunc: 'count'
-    },
-
+      headerName: 'Issue Recommendations',
+      headerClass: 'center-header',
+      children: [
+     {
+    field: "Issue ID",
+    headerName: "Issue ID",
+    chartDataType: "category",
+    filter: true,
+    tooltipField: "Issue ID",
+    headerCheckboxSelection: true,
+    enableRowGroup: true,
+    checkboxSelection: true,
+    rowDrag: true,
+    enablePivot: true,
+    enableValue: true,
+    width: 200,
+    //aggFunc: 'count'
+  },
+  {
+    field: "Issue Title",
+    headerName: "Issue Title",
+    tooltipField: "Issue Title",
+    chartDataType: "category",
+    filter: true,
+    wrapText: true,
+    enableRowGroup: true,
+    enablePivot: true,
+    enableValue: true,
+    width: 500,
+    //aggFunc: 'count'
+  },
+  {
+    field: "Issue Description",
+    headerName: "Issue Description",
+    tooltipField: "Issue Description",
+    chartDataType: "category",
+    filter: true,
+    enableRowGroup: true,
+    wrapText: true,
+    enablePivot: true,
+    enableValue: true,
+    width: 500,
+    //aggFunc: 'count'
+  },
+  ]
+  },
+  {
+    headerName: 'Control Recommendations',
+headerClass: 'center-header',
+    children: [
+   {
+  field: "ctrl_id",
+  headerName: "Control ID",
+  chartDataType: "category",
+  filter: true,
+  tooltipField: "ctrl_id",
+  enableRowGroup: true,
+  enablePivot: true,
+  enableValue: true,
+  width: 200,
+  //aggFunc: 'count'
+},
+{
+  field: "ctrl_name",
+  headerName: "Control Name",
+  tooltipField: "ctrl_name",
+  chartDataType: "category",
+  wrapText: true,
+  filter: true,
+  enableRowGroup: true,
+  enablePivot: true,
+  enableValue: true,
+  width: 500,
+  //aggFunc: 'count'
+},
+{
+  field: "ctrl_desc",
+  headerName: "Control Description",
+  tooltipField: "ctrl_desc",
+  chartDataType: "category",
+  filter: true,
+  enableRowGroup: true,
+  wrapText: true,
+  enablePivot: true,
+  enableValue: true,
+  width: 500,
+  //aggFunc: 'count'
+},
+ 
+    ]
+  
+}
   ]);
 
   useEffect(() => {
@@ -130,8 +153,8 @@ function App() {
   const defaultColDef = useMemo(() => {
     return {
       sortable: true,
-      flex: 1,
-      minWidth: 270,
+      //flex: 1,
+      //minWidth: 500,
       resizable: true,
       floatingFilter: true,
       enablePivot: true,
@@ -207,6 +230,7 @@ function App() {
         statusBar={statusBar}
         suppressBrowserResizeObserver={true}
         pivotMode={false}
+        rowHeight={rowHeight}
       />
     </div>
   );
